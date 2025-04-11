@@ -1,0 +1,67 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .carouselWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 900px;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.3s ease, width 0.3s ease;
+    text-align: left;
+  }
+  
+  .card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .center img {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .side {
+    opacity: 0.5;
+    transform: scale(0.9) translateY(-3rem); 
+}
+
+  
+  .cardInfo {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+  }
+  
+  .cardInfo strong {
+    font-weight: bold;
+    display: block;
+  }
+  
+  .cardPlaceholder {
+    width: 200px;
+    height: 200px;
+    visibility: hidden;
+  }
+  
