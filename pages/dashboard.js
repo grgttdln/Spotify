@@ -65,7 +65,7 @@ export default function Dashboard() {
   };
 
   const handleCardClick = (id) => {
-    router.push(`/play/${id}`);
+    router.push(`/play/${id}?access_token=${accessToken}&playlist_id=${id}`);
   };
 
   return (
@@ -77,7 +77,11 @@ export default function Dashboard() {
       </Head>
 
       <main className={styles.main}>
-        {loading && <p>Loading playlists...</p>}
+        {loading && (
+          <div className={styles.loaderWrapper}>
+            <div className={styles.loader} />
+          </div>
+        )}
         {error && <p style={{ color: "red" }}>{error}</p>}
         {!loading && !error && playlists.length === 0 && (
           <p>No playlists found.</p>
@@ -104,7 +108,7 @@ export default function Dashboard() {
                 <div
                   key={playlist.id}
                   className={cardClass}
-                  onClick={() => handleCardClick(playlist.id)} // Add click handler here
+                  onClick={() => handleCardClick(playlist.id)}
                 >
                   {playlist.images.length > 0 && (
                     <img src={playlist.images[0].url} alt={playlist.name} />

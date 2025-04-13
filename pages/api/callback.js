@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     },
     body: new URLSearchParams({
       grant_type: "authorization_code",
-      code: code,
+      code,
       redirect_uri: redirectUri,
     }),
   };
@@ -33,9 +33,13 @@ export default async function handler(req, res) {
         .json({ error: data.error_description });
     }
 
-    // ✅ REDIRECT TO DASHBOARD WITH ACCESS TOKEN
-    res.redirect(`/dashboard?access_token=${data.access_token}`);
+    const { access_token, refresh_token } = data;
+
+    res.redirect(
+      `/dashboard?access_token=${access_token}&refresh_token=${refresh_token}`
+    );
   } catch (err) {
+    console.error("Error exchanging token:", err);
     res.status(500).json({ error: "Token exchange failed" });
   }
 }

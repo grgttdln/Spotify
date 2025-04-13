@@ -8,14 +8,12 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Step 1: Function to fetch playlists
   const handleFetchPlaylists = async () => {
     setLoading(true);
     setError(null);
     setPlaylists([]);
 
     try {
-      // Make a request to your API to fetch the user's playlists using the access token
       const res = await fetch(
         `/api/user-playlists?access_token=${accessToken}`
       );
@@ -29,14 +27,12 @@ export default function Home() {
     }
   };
 
-  // Step 2: Function to initiate the login with Spotify
   const loginWithSpotify = () => {
-    window.location.href = "/api/login"; // This will start the OAuth flow
+    window.location.href = "/api/login";
   };
 
   return (
     <div>
-      {/* Step 3: Display login button if no access token is available */}
       {!accessToken ? (
         <div className={styles.container}>
           <div className={styles.imageWrapper}>
@@ -76,7 +72,11 @@ export default function Home() {
         </div>
       )}
 
-      {loading && <p>Loading...</p>}
+      {loading && (
+        <div className={styles.loaderWrapper}>
+          <div className={styles.loader} />
+        </div>
+      )}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       {playlists.length > 0 && (

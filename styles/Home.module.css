@@ -12,7 +12,7 @@
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem; /* spacing between text and icon */
+    gap: 0.5rem; 
     background-color: #F7F7F7;
     border: none;
     font-size: 1.5rem;
@@ -39,7 +39,7 @@
   .imageWrapper img {
     width: 100%;
     height: auto;
-    max-width: 90%; /* optional: gives some breathing room */
+    max-width: 90%;
   }
   
   .content {
@@ -70,4 +70,30 @@
     }
   }
   
+  .loaderWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  
+  .loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #6A6A6A; 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
   
